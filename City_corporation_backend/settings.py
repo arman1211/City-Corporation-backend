@@ -35,7 +35,7 @@ CORS_ALLOWED_ORIGINS = [
     # Add other origins if necessary
 ]
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://city-corporation-backend.onrender.com/','*']
 AUTH_USER_MODEL = 'user_authentication.User'
 
 # Application definition
