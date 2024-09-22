@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-34u@ws=8ei^*kbs2kckl$5h!m6cya-ua01!&y^yv3uefl&f)2u
 DEBUG = True
 CSRF_TRUSTED_ORIGINS = [
     'https://*',
-    'https://city-corporation-backend.onrender.com/'
+
+    "https://citycorporation.netlify.app",  # Replace with your Netlify site URL
+    "https://city-corporation-backend.onrender.com"
+
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
