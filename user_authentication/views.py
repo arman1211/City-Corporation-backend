@@ -1,11 +1,12 @@
 from rest_framework import  status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import UserSerializer, CustomTokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
-
+from .models import User
 
 
 
@@ -43,3 +44,7 @@ class LogoutView(APIView):
         except Exception as e:
             print(f"Unexpected error: {e}")
             return Response({"detail": "An error occurred during logout"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+class GetUserView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
