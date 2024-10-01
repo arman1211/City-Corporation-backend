@@ -16,3 +16,7 @@ class ChatRoomMessagesView(generics.ListAPIView):
 class ChatRoomCreateView(generics.CreateAPIView):
     queryset = ChatRoom.objects.all()
     serializer_class = ChatRoomSerializer
+
+class AllChatRoomView(generics.ListAPIView):
+    queryset = ChatRoom.objects.all().order_by('-created_at')
+    serializer_class= ChatRoomSerializer
