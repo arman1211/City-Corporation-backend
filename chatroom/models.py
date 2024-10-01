@@ -3,7 +3,6 @@ from user_authentication.models import User
 
 class ChatRoom(models.Model):
     citizen = models.ForeignKey(User,related_name='citizen_chatroom',on_delete=models.CASCADE)
-    authority = models.ForeignKey(User,related_name='authority_chatroom',on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Message(models.Model):

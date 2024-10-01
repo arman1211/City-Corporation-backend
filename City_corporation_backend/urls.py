@@ -25,6 +25,7 @@ urlpatterns = [
     path('services/',include('service.urls')),
     path('authority/',include('authority_works.urls')),
     path('chat/',include('chatroom.urls')),
+    path('contact/',include('contact.urls')),
     
 ]
 if settings.DEBUG:

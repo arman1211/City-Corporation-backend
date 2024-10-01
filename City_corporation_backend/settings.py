@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'service',
     'authority_works',
     'chatroom',
+    'contact',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
