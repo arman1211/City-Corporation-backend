@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import ProblemType,ServiceType,ProblemReport,ServiceRequest
 from .serializers import ServiceRequestListSerializer, ProblemReportSerializer,ProblemReportListSerializer, ServiceRequestSerializer,ProblemTypeListSerializer,ServiceTypeListSerializer
-
+from City_corporation_backend.permissions import IsAuthority
 # --------problem report related view------- 
 class ProblemReportView(APIView):
     def post(self, request):
@@ -51,18 +51,23 @@ class ProblemTypeListView(generics.ListAPIView):
     serializer_class = ProblemTypeListSerializer
 
 class ProblemTypeCreateView(generics.CreateAPIView):
+    permission_classes=[IsAuthority]
+
     queryset = ProblemType.objects.all()
     serializer_class = ProblemTypeListSerializer
 
 class ProblemTypeDetailsView(generics.RetrieveAPIView):
+    permission_classes=[IsAuthority]
     queryset = ProblemType.objects.all()
     serializer_class= ProblemTypeListSerializer
 
 class ProblemTypeUpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes=[IsAuthority]
     queryset = ProblemType.objects.all()
     serializer_class= ProblemTypeListSerializer
 
 class ProblemTypeDeleteView(generics.DestroyAPIView):
+    permission_classes=[IsAuthority]
     queryset = ProblemType.objects.all()
     serializer_class= ProblemTypeListSerializer
 
@@ -73,17 +78,21 @@ class ServiceTypeListView(generics.ListAPIView):
     serializer_class = ServiceTypeListSerializer
 
 class ServiceTypeCreateView(generics.CreateAPIView):
+    permission_classes=[IsAuthority]
     queryset = ServiceType.objects.all()
     serializer_class = ServiceTypeListSerializer
 
 class ServiceTypeDetailsView(generics.RetrieveAPIView):
+    permission_classes=[IsAuthority]
     queryset = ServiceType.objects.all()
     serializer_class = ServiceTypeListSerializer
 
 class ServiceTypeUpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes=[IsAuthority]
     queryset = ServiceType.objects.all()
     serializer_class = ServiceTypeListSerializer
 
 class ServiceTypeDeleteView(generics.DestroyAPIView):
+    permission_classes=[IsAuthority]
     queryset = ServiceType.objects.all()
     serializer_class = ServiceTypeListSerializer

@@ -4,28 +4,22 @@ from rest_framework.response import Response
 from .models import ProblemReportSolve,ServiceRequestSolve
 from .serializers import ServiceRequestByServiceIdSerializer, ProblemReportByProblemIdSerializer, ProblemReportSolveSerializer,ServiceRequestSolveSerializer
 from django.shortcuts import get_object_or_404
+from City_corporation_backend.permissions import IsAuthority, IsCitizen
 
 class ProblemReportSolveView(generics.CreateAPIView):
     queryset = ProblemReportSolve.objects.all()
     serializer_class = ProblemReportSolveSerializer
+    permission_classes = [IsAuthority]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
 
-        # Notify the citizen (optional)
-        # self.notify_citizen(serializer.instance)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    # def notify_citizen(self, problem_solve):
-    #     # Example: Send an email or notification to the citizen
-    #     citizen_email = problem_solve.problem.citizen.email
-    #     message = problem_solve.description
-    #     # Logic to send email or message
-    #     # send_email(citizen_email, "Problem Report Update", message)
-    #     print(f"Sent message to {citizen_email}: {message}")
+   
 
 class ProblemReportByProblemIdView(generics.RetrieveAPIView):
     serializer_class = ProblemReportByProblemIdSerializer
@@ -38,24 +32,16 @@ class ProblemReportByProblemIdView(generics.RetrieveAPIView):
 class ServiceRequestSolveView(generics.CreateAPIView):
     queryset = ServiceRequestSolve.objects.all()
     serializer_class = ServiceRequestSolveSerializer
-
+    permission_classes = [IsAuthority]
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
 
-        # Notify the citizen (optional)
-        # self.notify_citizen(serializer.instance)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    # def notify_citizen(self, problem_solve):
-    #     # Example: Send an email or notification to the citizen
-    #     citizen_email = problem_solve.problem.citizen.email
-    #     message = problem_solve.description
-    #     # Logic to send email or message
-    #     # send_email(citizen_email, "Problem Report Update", message)
-    #     print(f"Sent message to {citizen_email}: {message}")
+
 
 class ServiceRequestByServiceIdView(generics.RetrieveAPIView):
     serializer_class = ServiceRequestByServiceIdSerializer

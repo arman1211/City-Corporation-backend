@@ -6,5 +6,6 @@ urlpatterns = [
     path('message/send/', MessageCreateView.as_view(), name='message-create'),
     path('chat-room/', ChatRoomCreateView.as_view(), name='chat-room-create'),
     path('chat-room/list', AllChatRoomView.as_view(), name='chat-room-list'),
+    
 
 ]
