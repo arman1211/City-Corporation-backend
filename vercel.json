@@ -1,0 +1,16 @@
+{
+    "builds": [
+      {
+        "src": "City_corporation_backend/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.2" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "City_corporation_backend/wsgi.py"
+      }
+    ]
+  }
+  

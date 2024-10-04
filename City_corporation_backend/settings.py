@@ -28,7 +28,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*',
 
     "https://citycorporation.netlify.app",  # Replace with your Netlify site URL
-    "https://city-corporation-backend.onrender.com"
+    "https://city-corporation-backend.onrender.com",
+    "https://city-corporation-backend.vercel.app"
 
 ]
 CORS_ALLOWED_ORIGINS = [
@@ -39,12 +40,13 @@ CORS_ALLOWED_ORIGINS = [
     # Add other origins if necessary
 ]
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['https://city-corporation-backend.onrender.com/','*']
+ALLOWED_HOSTS = ['https://city-corporation-backend.onrender.com/','*','.vercel.app']
 AUTH_USER_MODEL = 'user_authentication.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,6 +78,7 @@ REST_FRAMEWORK = {
 }
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -103,14 +106,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'City_corporation_backend.wsgi.application'
+WSGI_APPLICATION = 'City_corporation_backend.wsgi.app'
 
 MEDIA_URL = '/media/'
 
 # Path where media is stored'
 MEDIA_ROOT = BASE_DIR / ''
 
+
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
