@@ -3,7 +3,7 @@ from user_authentication.models import User
 # Create your models here.
 
 class ProblemType(models.Model):
-    image = models.ImageField(upload_to='service/media/')
+    image = models.CharField(max_length=100, default=None)
     name = models.CharField(max_length=100)
     description = models.TextField()
 
@@ -11,7 +11,7 @@ class ProblemType(models.Model):
         return self.name
 
 class ServiceType(models.Model):
-    image = models.ImageField(upload_to='service/media/')
+    image = models.CharField(max_length=100, default=None)
     name = models.CharField(max_length=100)
     description = models.TextField()
 
