@@ -29,7 +29,7 @@ This repository contains the backend for the City Corporation project, built wit
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/city-corporation-backend.git
+    git clone https://github.com/arman1211/City-Corporation-backend.git
     cd city-corporation-backend
     ```
 
